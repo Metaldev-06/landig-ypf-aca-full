@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import acaImg from '../assets/images/hero-image.jpg';
+
 const highlights = [
   {
     title: "Respaldo de marca",
@@ -21,10 +24,11 @@ const highlights = [
 <section class="section-muted aca">
   <div class="container aca__grid">
     <div class="aca__media reveal">
-      <img
-        src="/images/hero-image.jpg"
+      <Image
+        src={acaImg}
         alt="Fachada de la estación Díaz Servicios SRL, concesionario oficial YPF ACA"
         loading="lazy"
+        decoding="async"
       />
       <div class="aca__media-badge">
         <span class="badge badge-aca">ACA</span>

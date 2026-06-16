@@ -1,14 +1,17 @@
 ---
-
+import { Image } from 'astro:assets';
+import heroImg from '../assets/images/hero-image.jpg';
 ---
 
 <section id="inicio" class="hero">
   <div class="hero__media" aria-hidden="true">
-    <img
-      src="/images/hero-image.jpg"
+    <Image
+      src={heroImg}
       alt=""
       class="hero__image"
       loading="eager"
+      fetchpriority="high"
+      decoding="sync"
     />
     <div class="hero__overlay"></div>
   </div>

@@ -5,6 +5,8 @@ import Footer from "../components/Footer.astro";
 import Faq from "../components/Faq.astro";
 import AcaJoinCta from "../components/AcaJoinCta.astro";
 import { ACA_JOIN_URL, ACA_STATION_JOIN_URL } from "../lib/constants";
+import { Image } from "astro:assets";
+import rutaImg from "../assets/images/ruta.jpg";
 
 const benefits = [
   {
@@ -100,7 +102,7 @@ const faqs = [
     <!-- Hero Socios ACA -->
     <section class="socios-hero">
       <div class="socios-hero__media" aria-hidden="true">
-        <img src="/images/ruta.jpg" alt="" loading="eager" />
+        <Image src={rutaImg} alt="" loading="eager" fetchpriority="high" decoding="sync" />
         <div class="socios-hero__overlay"></div>
       </div>
 

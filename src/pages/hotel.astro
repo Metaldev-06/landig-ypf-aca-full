@@ -3,11 +3,15 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { HOTEL_WHATSAPP_NUMBER } from "../lib/constants";
+import { Image } from "astro:assets";
+import imgFachada from "../assets/images/fachada-ypf.jpg";
+import imgHotel1 from "../assets/images/hotel-1.jpg";
+import imgHotel2 from "../assets/images/hotel-2.jpg";
 
 const carouselSlides = [
-  { src: "/images/fachada-ypf.jpg", alt: "Vista exterior del hotel" },
-  { src: "/images/hotel-1.jpg", alt: "Habitación matrimonial" },
-  { src: "/images/hotel-2.jpg", alt: "Habitación doble" },
+  { src: imgFachada, alt: "Vista exterior del hotel" },
+  { src: imgHotel1, alt: "Habitación matrimonial" },
+  { src: imgHotel2, alt: "Habitación doble" },
 ];
 
 const features = [
@@ -29,7 +33,7 @@ const features = [
     <!-- Hero hotel -->
     <section class="hotel-hero">
       <div class="hotel-hero__media" aria-hidden="true">
-        <img src="/images/fachada-ypf.jpg" alt="" loading="eager" />
+        <Image src={imgFachada} alt="" loading="eager" fetchpriority="high" decoding="sync" />
         <div class="hotel-hero__overlay"></div>
       </div>
       <div class="container hotel-hero__content">
@@ -88,7 +92,7 @@ const features = [
               {
                 carouselSlides.map((slide) => (
                   <div class="hotel-carousel__slide">
-                    <img src={slide.src} alt={slide.alt} loading="lazy" />
+                    <Image src={slide.src} alt={slide.alt} loading="lazy" decoding="async" />
                   </div>
                 ))
               }

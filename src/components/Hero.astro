@@ -1,10 +1,11 @@
 ---
+
 ---
 
 <section id="inicio" class="hero">
   <div class="hero__media" aria-hidden="true">
     <img
-      src="/images/hero-estacion.svg"
+      src="/images/hero-image.jpg"
       alt=""
       class="hero__image"
       loading="eager"
@@ -13,38 +14,21 @@
   </div>
 
   <div class="container hero__content">
-    <div class="hero__badges reveal">
-      <span class="badge badge-ypf">YPF</span>
-      <span class="badge badge-aca">Concesionario oficial ACA</span>
-      <span class="badge badge-full">Tienda Full</span>
-    </div>
-
-    <h1 class="hero__title reveal reveal-delay-1">Tu parada segura en Ingeniero Juárez</h1>
+    <h1 class="hero__title reveal reveal-delay-1">
+      Tu parada segura en Ingeniero Juárez
+    </h1>
 
     <p class="hero__subtitle reveal reveal-delay-2">
-      Combustible YPF, beneficios ACA y todo lo que necesitás para seguir viaje,
+      Estación YPF, beneficios ACA y todo lo que necesitás para seguir viaje,
       con la atención cercana de siempre.
     </p>
 
     <div class="hero__actions reveal reveal-delay-3">
       <a href="/ubicacion" class="btn btn-primary">Cómo llegar</a>
-      <a href="/servicios" class="btn btn-secondary">Conocé nuestros servicios</a>
+      <a href="/servicios" class="btn btn-secondary"
+        >Conocé nuestros servicios</a
+      >
     </div>
-
-    <ul class="hero__stats reveal reveal-delay-4">
-      <li>
-        <strong>24 hs</strong>
-        <span>Atención todos los días</span>
-      </li>
-      <li>
-        <strong>100%</strong>
-        <span>Combustibles YPF</span>
-      </li>
-      <li>
-        <strong>+ Full</strong>
-        <span>Tienda de conveniencia</span>
-      </li>
-    </ul>
   </div>
 </section>
 
@@ -64,7 +48,12 @@
     position: absolute;
     inset: 0;
     z-index: -1;
-    background: linear-gradient(135deg, var(--color-aca-blue) 0%, var(--color-aca-blue-dark) 60%, var(--color-black) 100%);
+    background: linear-gradient(
+      135deg,
+      var(--color-aca-blue) 0%,
+      var(--color-aca-blue-dark) 60%,
+      var(--color-black) 100%
+    );
   }
 
   .hero__image {
@@ -78,7 +67,11 @@
   .hero__overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(7, 51, 94, 0.55) 0%, rgba(7, 51, 94, 0.85) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(7, 51, 94, 0.55) 0%,
+      rgba(7, 51, 94, 0.85) 100%
+    );
   }
 
   .hero__content {
@@ -86,19 +79,10 @@
     z-index: 1;
     max-width: 720px;
   }
-
-  .hero__badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-  }
-
   .hero__title {
     font-size: clamp(2.4rem, 6vw, 4rem);
     margin-bottom: 1.1rem;
   }
-
   .hero__subtitle {
     font-size: clamp(1.05rem, 2vw, 1.25rem);
     color: rgba(255, 255, 255, 0.85);
@@ -111,30 +95,5 @@
     flex-wrap: wrap;
     gap: 1rem;
     margin-bottom: 3rem;
-  }
-
-  .hero__stats {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.18);
-    padding-top: 1.75rem;
-  }
-
-  .hero__stats li {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-  }
-
-  .hero__stats strong {
-    font-size: 1.6rem;
-    font-weight: 800;
-    color: var(--color-ypf-yellow);
-  }
-
-  .hero__stats span {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.75);
   }
 </style>

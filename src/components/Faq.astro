@@ -51,14 +51,21 @@ const {
     </div>
 
     <div class="faq__list reveal reveal-delay-1">
-      {faqs.map((faq) => (
-        <details class="faq__item">
-          <summary>
+      {faqs.map((faq, i) => (
+        <div class="faq__item">
+          <button
+            class="faq__summary"
+            type="button"
+            aria-expanded="false"
+            aria-controls={`faq-body-${i}`}
+          >
             {faq.question}
             <span class="faq__icon" aria-hidden="true"></span>
-          </summary>
-          <p>{faq.answer}</p>
-        </details>
+          </button>
+          <div class="faq__body" id={`faq-body-${i}`}>
+            <p>{faq.answer}</p>
+          </div>
+        </div>
       ))}
     </div>
   </div>
@@ -79,27 +86,29 @@ const {
     background-color: var(--color-gray-light);
     border-radius: var(--radius-md);
     padding: 0.4rem 1.5rem;
-    transition: background-color 0.25s ease;
+    transition: background-color 0.25s ease, box-shadow 0.25s ease;
   }
 
-  .faq__item[open] {
+  .faq__item.is-open {
     background-color: var(--color-white);
     box-shadow: var(--shadow-soft);
   }
 
-  .faq__item summary {
+  .faq__summary {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
+    width: 100%;
     padding-block: 1.1rem;
+    font-size: 1rem;
     font-weight: 700;
+    font-family: inherit;
     color: var(--color-aca-blue-dark);
-    list-style: none;
-  }
-
-  .faq__item summary::-webkit-details-marker {
-    display: none;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
   }
 
   .faq__icon {
@@ -130,13 +139,63 @@ const {
     height: 14px;
   }
 
-  .faq__item[open] .faq__icon::after {
+  .faq__item.is-open .faq__icon::after {
     transform: translate(-50%, -50%) rotate(90deg) scaleY(0);
   }
 
-  .faq__item p {
+  .faq__body {
+    overflow: hidden;
+    height: 0;
+    transition: height 0.32s ease;
+  }
+
+  .faq__body p {
     color: var(--color-gray);
     padding-bottom: 1.25rem;
     font-size: 0.95rem;
   }
 </style>
+
+<script>
+  function initFaq() {
+    document.querySelectorAll<HTMLElement>('.faq__item:not([data-faq-init])').forEach((item) => {
+      item.dataset.faqInit = '1';
+      const btn = item.querySelector<HTMLButtonElement>('.faq__summary');
+      const body = item.querySelector<HTMLElement>('.faq__body');
+      if (!btn || !body) return;
+
+      btn.addEventListener('click', () => {
+        if (item.classList.contains('is-open')) {
+          // CERRAR: fijar altura actual → animar a 0
+          body.style.height = body.scrollHeight + 'px';
+          body.offsetHeight; // forzar reflow
+          requestAnimationFrame(() => { body.style.height = '0px'; });
+
+          item.classList.remove('is-open');
+          btn.setAttribute('aria-expanded', 'false');
+
+          let done = false;
+          const finish = () => { if (!done) { done = true; body.style.height = ''; } };
+          body.addEventListener('transitionend', finish, { once: true });
+          setTimeout(finish, 400);
+        } else {
+          // ABRIR: medir altura natural → animar desde 0
+          const target = body.scrollHeight;
+          body.style.height = '0px';
+          body.offsetHeight; // forzar reflow
+          requestAnimationFrame(() => { body.style.height = target + 'px'; });
+
+          item.classList.add('is-open');
+          btn.setAttribute('aria-expanded', 'true');
+
+          let done = false;
+          const finish = () => { if (!done) { done = true; body.style.height = 'auto'; } };
+          body.addEventListener('transitionend', finish, { once: true });
+          setTimeout(finish, 400);
+        }
+      });
+    });
+  }
+
+  document.addEventListener('astro:page-load', initFaq);
+</script>

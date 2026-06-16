@@ -1,16 +1,19 @@
 ---
 const highlights = [
   {
-    title: 'Respaldo de marca',
-    description: 'Estándares de calidad y seguridad YPF en cada surtidor y cada litro despachado.',
+    title: "Respaldo de marca",
+    description:
+      "Estándares de calidad y seguridad YPF en cada surtidor y cada litro despachado.",
   },
   {
-    title: 'Trayectoria local',
-    description: 'Años acompañando a familias, transportistas y viajeros que pasan por Ingeniero Juárez.',
+    title: "Trayectoria local",
+    description:
+      "Años acompañando a familias, transportistas y viajeros que pasan por Ingeniero Juárez.",
   },
   {
-    title: 'Beneficios ACA',
-    description: 'Programas y descuentos para socios del Automóvil Club Argentino.',
+    title: "Beneficios ACA",
+    description:
+      "Programas y descuentos para socios del Automóvil Club Argentino.",
   },
 ];
 ---
@@ -18,7 +21,11 @@ const highlights = [
 <section class="section-muted aca">
   <div class="container aca__grid">
     <div class="aca__media reveal">
-      <img src="/images/aca-fachada.svg" alt="Fachada de la estación Díaz Servicios SRL, concesionario oficial YPF ACA" loading="lazy" />
+      <img
+        src="/images/hero-image.jpg"
+        alt="Fachada de la estación Díaz Servicios SRL, concesionario oficial YPF ACA"
+        loading="lazy"
+      />
       <div class="aca__media-badge">
         <span class="badge badge-aca">ACA</span>
         <span class="badge badge-ypf">YPF</span>
@@ -32,20 +39,24 @@ const highlights = [
         Díaz Servicios SRL es concesionario oficial <strong>YPF ACA</strong>,
         una alianza que combina la calidad de los combustibles YPF con el
         respaldo, la asistencia y los beneficios del Automóvil Club Argentino.
-        Para vos, eso significa confianza de punta a punta: desde la carga
-        hasta el último kilómetro de tu viaje.
+        Para vos, eso significa confianza de punta a punta: desde la carga hasta
+        el último kilómetro de tu viaje.
       </p>
 
       <ul class="aca__list">
-        {highlights.map((item) => (
-          <li>
-            <span class="aca__list-icon" aria-hidden="true">✓</span>
-            <div>
-              <strong>{item.title}</strong>
-              <p>{item.description}</p>
-            </div>
-          </li>
-        ))}
+        {
+          highlights.map((item) => (
+            <li>
+              <span class="aca__list-icon" aria-hidden="true">
+                ✓
+              </span>
+              <div>
+                <strong>{item.title}</strong>
+                <p>{item.description}</p>
+              </div>
+            </li>
+          ))
+        }
       </ul>
     </div>
   </div>

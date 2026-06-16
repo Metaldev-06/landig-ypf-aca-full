@@ -1,15 +1,15 @@
 ---
-import { ACA_JOIN_URL } from '../lib/constants';
+import { ACA_JOIN_URL } from "../lib/constants";
 
 const benefits = [
-  { title: 'Auxilio mecánico 24/7', icon: '🛠️' },
-  { title: 'Descuentos en combustibles', icon: '⛽' },
-  { title: 'Descuentos en hoteles ACA', icon: '🏨' },
-  { title: 'Asistencia al viajero', icon: '🧭' },
-  { title: 'Seguro automotor', icon: '🛡️' },
-  { title: 'Gestión de trámites', icon: '📄' },
-  { title: 'Comercios adheridos', icon: '🏬' },
-  { title: 'Viajá con tranquilidad', icon: '🧳' },
+  { title: "Auxilio mecánico 24/7", icon: "🛠️" },
+  { title: "Descuentos en combustibles", icon: "⛽" },
+  { title: "Descuentos en hoteles ACA", icon: "🏨" },
+  { title: "Asistencia al viajero", icon: "🧭" },
+  { title: "Seguro automotor", icon: "🛡️" },
+  { title: "Gestión de trámites", icon: "📄" },
+  { title: "Comercios adheridos", icon: "🏬" },
+  { title: "Viajá con tranquilidad", icon: "🧳" },
 ];
 ---
 
@@ -17,29 +17,42 @@ const benefits = [
   <div class="container">
     <div class="aca-member__panel reveal">
       <div class="section-header aca-member__header">
-        <span class="eyebrow">Club ACA</span>
+        <span class="eyebrow"> Se parte del club </span>
         <h2 class="section-title">Beneficios de ser Socio ACA</h2>
         <p class="section-subtitle">
           Ser socio ACA es viajar con respaldo. Accedé a auxilio mecánico,
-          descuentos, asistencia al viajero y beneficios exclusivos en todo
-          el país.
+          descuentos, asistencia al viajero y beneficios exclusivos en todo el
+          país.
         </p>
       </div>
 
       <div class="grid grid-4 aca-member__grid">
-        {benefits.map((benefit, index) => (
-          <div class={`aca-member__item reveal reveal-delay-${(index % 4) + 1}`}>
-            <span class="aca-member__icon" aria-hidden="true">{benefit.icon}</span>
-            <span class="aca-member__title">{benefit.title}</span>
-          </div>
-        ))}
+        {
+          benefits.map((benefit, index) => (
+            <div
+              class={`aca-member__item reveal reveal-delay-${(index % 4) + 1}`}
+            >
+              <span class="aca-member__icon" aria-hidden="true">
+                {benefit.icon}
+              </span>
+              <span class="aca-member__title">{benefit.title}</span>
+            </div>
+          ))
+        }
       </div>
 
       <div class="aca-member__actions">
-        <a href={ACA_JOIN_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+        <a
+          href={ACA_JOIN_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary"
+        >
           Asociate hoy
         </a>
-        <a href="/socios-aca" class="btn btn-outline aca-member__btn-outline">Ver beneficios</a>
+        <a href="/socios-aca" class="btn btn-outline aca-member__btn-outline"
+          >Ver beneficios</a
+        >
       </div>
     </div>
   </div>
@@ -47,7 +60,11 @@ const benefits = [
 
 <style>
   .aca-member__panel {
-    background: linear-gradient(135deg, var(--color-aca-blue) 0%, var(--color-aca-blue-dark) 100%);
+    background: linear-gradient(
+      135deg,
+      var(--color-aca-blue) 0%,
+      var(--color-aca-blue-dark) 100%
+    );
     border-radius: var(--radius-lg);
     padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 4rem);
     color: var(--color-white);
@@ -81,7 +98,10 @@ const benefits = [
     background-color: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-md);
-    transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+    transition:
+      transform 0.25s ease,
+      background-color 0.25s ease,
+      border-color 0.25s ease;
   }
 
   .aca-member__item:hover {

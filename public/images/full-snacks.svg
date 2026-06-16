@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 700" preserveAspectRatio="xMidYMid slice">
+  <rect width="700" height="700" fill="#1f242c"/>
+  <rect x="0" y="0" width="700" height="700" fill="#ffd200" opacity="0.15"/>
+  <text x="50%" y="50%" fill="#ffd200" font-family="Arial, sans-serif" font-size="28" font-weight="700" text-anchor="middle">
+    Foto snacks Full
+  </text>
+</svg>

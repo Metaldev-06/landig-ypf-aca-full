@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffd200"/>
+      <stop offset="1" stop-color="#0a4f9e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="#f4f6f9"/>
+  <rect width="1200" height="900" fill="url(#g2)" opacity="0.18"/>
+  <rect x="120" y="220" width="960" height="520" rx="18" fill="#ffffff" opacity="0.65"/>
+  <text x="50%" y="50%" fill="#07335e" font-family="Arial, sans-serif" font-size="38" font-weight="700" text-anchor="middle">
+    Reemplazar con foto de la fachada YPF ACA
+  </text>
+</svg>

@@ -1,0 +1,275 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Faq from '../components/Faq.astro';
+import AcaJoinCta from '../components/AcaJoinCta.astro';
+import { ACA_JOIN_URL, ACA_STATION_JOIN_URL } from '../lib/constants';
+
+const benefits = [
+  {
+    title: 'Auxilio mecánico 24/7',
+    description: 'Puesta en marcha, remolque, asistencia en ruta y ayuda ante imprevistos, las 24 horas, todos los días del año.',
+    icon: '🛠️',
+  },
+  {
+    title: 'Combustible YPF',
+    description: 'Beneficios y descuentos para socios ACA en estaciones adheridas, incluyendo Díaz Servicios SRL.',
+    icon: '⛽',
+  },
+  {
+    title: 'Hoteles ACA',
+    description: 'Acceso a descuentos en la red hotelera, hosterías, balnearios y centros recreativos en todo el país.',
+    icon: '🏨',
+  },
+  {
+    title: 'Asistencia al viajero',
+    description: 'Respaldo para viajar por Argentina con más tranquilidad, donde sea que te encuentres.',
+    icon: '🧭',
+  },
+  {
+    title: 'Seguro automotor',
+    description: 'Posibilidad de acceder a coberturas y beneficios especiales pensados para socios ACA.',
+    icon: '🛡️',
+  },
+  {
+    title: 'Trámites y gestiones',
+    description: 'Descuentos en servicios como DNI, pasaporte y permiso internacional para conducir.',
+    icon: '📄',
+  },
+  {
+    title: 'Comercios adheridos',
+    description: 'Beneficios en gastronomía, entretenimiento, accesorios y compras en comercios de todo el país.',
+    icon: '🏬',
+  },
+  {
+    title: 'Comunidad ACA',
+    description: 'Respaldo de una institución con presencia nacional y más de un siglo acompañando a los viajeros.',
+    icon: '🤝',
+  },
+];
+
+const faqs = [
+  {
+    question: '¿Cómo me hago socio ACA?',
+    answer: 'Podés iniciar tu asociación de forma online a través del enlace oficial de ACA que encontrarás en esta página, en los botones "Asociate hoy".',
+  },
+  {
+    question: '¿Qué beneficios tengo como socio?',
+    answer: 'Auxilio mecánico 24/7, descuentos en combustibles y hoteles ACA, asistencia al viajero, seguro automotor, gestión de trámites y beneficios en comercios adheridos, entre otros.',
+  },
+  {
+    question: '¿El auxilio mecánico funciona en ruta?',
+    answer: 'Sí, el auxilio mecánico está pensado especialmente para asistirte en ruta ante imprevistos como fallas mecánicas, pinchaduras o quedarte sin combustible.',
+  },
+  {
+    question: '¿Hay descuentos en hoteles?',
+    answer: 'Sí, los socios ACA acceden a descuentos en la red de hoteles, hosterías, balnearios y centros recreativos del Automóvil Club Argentino.',
+  },
+  {
+    question: '¿Puedo asociarme online?',
+    answer: 'Sí, la asociación se inicia de manera online a través del enlace oficial de ACA disponible en los botones "Asociate hoy" de esta página.',
+  },
+  {
+    question: '¿El enlace pertenece a Díaz Servicios SRL?',
+    answer: 'El enlace de asociación es el enlace oficial de ACA. Díaz Servicios SRL, como concesionario oficial YPF ACA, te lo acerca para facilitarte el proceso, pero la gestión la realiza directamente el Automóvil Club Argentino.',
+  },
+];
+---
+
+<Layout
+  title="Socios ACA | Díaz Servicios SRL - YPF ACA Formosa"
+  description="Hacete socio del Automóvil Club Argentino desde Díaz Servicios SRL en Formosa. Auxilio mecánico 24/7, descuentos en combustibles y hoteles, asistencia al viajero y muchos beneficios más."
+>
+  <Header />
+  <main>
+    <!-- Hero Socios ACA -->
+    <section class="socios-hero">
+      <div class="socios-hero__media" aria-hidden="true">
+        <img src="/images/socios-ruta.svg" alt="" loading="eager" />
+        <div class="socios-hero__overlay"></div>
+      </div>
+
+      <div class="container socios-hero__content">
+        <span class="eyebrow reveal">Club ACA</span>
+        <h1 class="socios-hero__title reveal reveal-delay-1">
+          Hacete Socio ACA y disfrutá beneficios todo el año
+        </h1>
+        <p class="socios-hero__subtitle reveal reveal-delay-2">
+          Desde Díaz Servicios SRL te acercamos la posibilidad de sumarte al
+          Automóvil Club Argentino y acceder a respaldo, ahorro y
+          tranquilidad en cada viaje.
+        </p>
+        <div class="socios-hero__actions reveal reveal-delay-3">
+          <a href={ACA_JOIN_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            Asociate hoy
+          </a>
+          <a href="#beneficios-destacados" class="btn btn-secondary">Conocé los beneficios</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beneficios destacados -->
+    <section id="beneficios-destacados" class="section-light socios-benefits">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow">Beneficios destacados</span>
+          <h2 class="section-title">Todo lo que ganás al ser socio ACA</h2>
+          <p class="section-subtitle">
+            Una membresía pensada para acompañarte antes, durante y después
+            de cada viaje, en cualquier punto del país.
+          </p>
+        </div>
+
+        <div class="grid grid-3 socios-benefits__grid">
+          {benefits.map((benefit, index) => (
+            <article class={`card socios-benefits__card reveal reveal-delay-${(index % 3) + 1}`}>
+              <span class="socios-benefits__icon" aria-hidden="true">{benefit.icon}</span>
+              <h3>{benefit.title}</h3>
+              <p>{benefit.description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Bloque emocional -->
+    <section class="section-muted socios-emotional">
+      <div class="container socios-emotional__inner reveal">
+        <h2 class="section-title">No es solo ahorrar, es viajar acompañado</h2>
+        <p>
+          Cuando sos socio ACA, contás con una red de asistencia y beneficios
+          pensada para acompañarte antes, durante y después de cada viaje.
+          Más tranquilidad para vos, y para quienes viajan con vos.
+        </p>
+      </div>
+    </section>
+
+    <!-- Bloque de promoción -->
+    <AcaJoinCta
+      eyebrow="Promoción Díaz Servicios SRL"
+      title="Asociate desde nuestra estación"
+      text="Este enlace corresponde a Díaz Servicios SRL. Al asociarte desde acá, accedés directamente a la propuesta oficial de ACA para nuestra estación."
+      href={ACA_STATION_JOIN_URL}
+      variant="light"
+    />
+
+    <!-- FAQ Socios ACA -->
+    <Faq
+      eyebrow="Preguntas frecuentes"
+      title="Dudas frecuentes sobre ser socio ACA"
+      subtitle="Te ayudamos a resolver las consultas más comunes antes de asociarte."
+      faqs={faqs}
+    />
+
+    <!-- CTA final -->
+    <AcaJoinCta
+      title="Empezá hoy a disfrutar los beneficios ACA"
+      text="Sumate desde Díaz Servicios SRL y viajá con más respaldo, ahorro y tranquilidad."
+      variant="dark"
+    />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .socios-hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    padding-top: calc(var(--header-height) + 2.5rem);
+    padding-bottom: 3.5rem;
+    overflow: hidden;
+    color: var(--color-white);
+    text-align: center;
+  }
+
+  .socios-hero__media {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(135deg, var(--color-aca-blue) 0%, var(--color-aca-blue-dark) 60%, var(--color-black) 100%);
+  }
+
+  .socios-hero__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.45;
+    mix-blend-mode: luminosity;
+  }
+
+  .socios-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(7, 51, 94, 0.55) 0%, rgba(7, 51, 94, 0.88) 100%);
+  }
+
+  .socios-hero__content {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin-inline: auto;
+  }
+
+  .socios-hero .eyebrow {
+    color: var(--color-ypf-yellow);
+    margin-bottom: 1rem;
+  }
+
+  .socios-hero__title {
+    font-size: clamp(2.2rem, 5.5vw, 3.5rem);
+    margin-bottom: 1.1rem;
+  }
+
+  .socios-hero__subtitle {
+    font-size: clamp(1.02rem, 2vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 2.25rem;
+  }
+
+  .socios-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .socios-benefits__grid {
+    gap: 1.5rem;
+  }
+
+  .socios-benefits__card {
+    padding: 2.25rem 1.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .socios-benefits__icon {
+    font-size: 2.25rem;
+  }
+
+  .socios-benefits__card h3 {
+    font-size: 1.1rem;
+    color: var(--color-aca-blue-dark);
+  }
+
+  .socios-benefits__card p {
+    color: var(--color-gray);
+    font-size: 0.95rem;
+  }
+
+  .socios-emotional__inner {
+    max-width: 720px;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .socios-emotional__inner p {
+    color: var(--color-gray-dark);
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    margin-top: 1rem;
+  }
+</style>

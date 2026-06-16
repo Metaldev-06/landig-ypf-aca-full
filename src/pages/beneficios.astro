@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Benefits from '../components/Benefits.astro';
+import AcaMemberBenefits from '../components/AcaMemberBenefits.astro';
+---
+
+<Layout
+  title="Beneficios | Díaz Servicios SRL - YPF ACA Formosa"
+  description="Descubrí los beneficios de Díaz Servicios SRL: combustibles YPF, tienda Full, atención para viajeros, servicios para tu vehículo y beneficios para socios ACA en Formosa."
+>
+  <Header />
+  <main>
+    <PageIntro
+      eyebrow="Beneficios"
+      title="Beneficios para vos en cada visita"
+      subtitle="Combustibles YPF, tienda Full, atención para viajeros y beneficios exclusivos para socios ACA, todo en Díaz Servicios."
+    />
+    <Benefits />
+    <AcaMemberBenefits />
+  </main>
+  <Footer />
+</Layout>

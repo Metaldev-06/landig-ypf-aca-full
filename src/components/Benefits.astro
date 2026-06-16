@@ -1,0 +1,100 @@
+---
+const benefits = [
+  {
+    title: 'Combustibles YPF',
+    description: 'Nafta súper, infinia y diésel con la calidad y el rendimiento de siempre, controlados y a la vista.',
+    icon: 'fuel',
+  },
+  {
+    title: 'Beneficios para socios ACA',
+    description: 'Descuentos, asistencia y ventajas exclusivas para socios del Club ACA en cada parada.',
+    icon: 'card',
+  },
+  {
+    title: 'Tienda Full',
+    description: 'Café de especialidad, snacks, bebidas y comidas rápidas en un espacio moderno y cómodo.',
+    icon: 'store',
+  },
+  {
+    title: 'Atención para viajeros',
+    description: 'Baños limpios, espacios de descanso y un equipo siempre dispuesto a ayudarte en tu recorrido.',
+    icon: 'travelers',
+  },
+  {
+    title: 'Servicios para tu vehículo',
+    description: 'Revisión de niveles, aire y lubricantes para que sigas viaje con total tranquilidad.',
+    icon: 'car',
+  },
+  {
+    title: 'Ubicación estratégica',
+    description: 'Sobre las rutas de acceso a Formosa, ideal para cargar combustible antes de seguir camino.',
+    icon: 'pin',
+  },
+];
+
+const icons: Record<string, string> = {
+  fuel: '<path d="M6 3h8v4a2 2 0 0 0 2 2h1v8a2 2 0 0 1-2 2H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M9 7h4"/><path d="M17 9l2 2v6.5a1.5 1.5 0 0 1-3 0V11"/><path d="M9 12h4v5H9z"/>',
+  card: '<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/><path d="M7 15h4"/>',
+  store: '<path d="M4 8 5 4h14l1 4"/><path d="M4 8v11a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V8"/><path d="M9 20v-5a2 2 0 0 1 4 0v5"/><path d="M4 8h16"/>',
+  travelers: '<circle cx="12" cy="6" r="2.5"/><path d="M5 21v-3a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v3"/><path d="M2 21h20"/>',
+  car: '<path d="M3 13l1.5-4.5A2 2 0 0 1 6.4 7h11.2a2 2 0 0 1 1.9 1.5L21 13"/><rect x="2" y="13" width="20" height="5" rx="1.5"/><circle cx="7" cy="18.5" r="1.5"/><circle cx="17" cy="18.5" r="1.5"/>',
+  pin: '<path d="M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/>',
+};
+---
+
+<section id="beneficios" class="section-light benefits">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Por qué elegirnos</span>
+      <h2 class="section-title">Más que una estación de servicio</h2>
+      <p class="section-subtitle">
+        Pensamos cada rincón de Díaz Servicios para que tu parada sea rápida,
+        cómoda y con el respaldo de las marcas en las que confiás.
+      </p>
+    </div>
+
+    <div class="grid grid-3 benefits__grid">
+      {benefits.map((benefit, index) => (
+        <article class={`card benefits__card reveal reveal-delay-${(index % 3) + 1}`}>
+          <div class="benefits__icon" set:html={`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${icons[benefit.icon]}</svg>`} />
+          <h3>{benefit.title}</h3>
+          <p>{benefit.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .benefits__card {
+    padding: 2.25rem 1.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .benefits__icon {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, var(--color-aca-blue), var(--color-aca-blue-dark));
+    color: var(--color-ypf-yellow);
+  }
+
+  .benefits__icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .benefits__card h3 {
+    font-size: 1.15rem;
+    color: var(--color-aca-blue-dark);
+  }
+
+  .benefits__card p {
+    color: var(--color-gray);
+    font-size: 0.95rem;
+  }
+</style>

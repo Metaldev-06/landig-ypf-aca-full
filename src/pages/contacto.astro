@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageIntro from '../components/PageIntro.astro';
+import CtaSection from '../components/CtaSection.astro';
+import { WHATSAPP_URL } from '../lib/constants';
+
+const contactItems = [
+  {
+    icon: '📍',
+    title: 'Dirección',
+    text: 'Ruta de acceso a Formosa, Formosa, Argentina',
+  },
+  {
+    icon: '📞',
+    title: 'Teléfono',
+    text: '+54 9 370 000-0000',
+    href: 'tel:+5493700000000',
+  },
+  {
+    icon: '💬',
+    title: 'WhatsApp',
+    text: 'Escribinos y te respondemos a la brevedad',
+    href: WHATSAPP_URL('Hola! Quería consultar sobre Díaz Servicios SRL.'),
+    external: true,
+  },
+  {
+    icon: '✉️',
+    title: 'Email',
+    text: 'contacto@diazserviciosypf.com.ar',
+    href: 'mailto:contacto@diazserviciosypf.com.ar',
+  },
+];
+---
+
+<Layout
+  title="Contacto | Díaz Servicios SRL - YPF ACA Formosa"
+  description="Comunicate con Díaz Servicios SRL en Formosa: dirección, teléfono, WhatsApp y email. Concesionario oficial YPF ACA con tienda Full."
+>
+  <Header />
+  <main>
+    <PageIntro
+      eyebrow="Contacto"
+      title="Hablemos"
+      subtitle="¿Tenés una consulta? Te respondemos por el medio que prefieras."
+    />
+
+    <section class="section-light contact">
+      <div class="container">
+        <div class="grid grid-2 contact__grid">
+          {contactItems.map((item, index) => (
+            <div class={`card contact__item reveal reveal-delay-${(index % 4) + 1}`}>
+              <span class="contact__icon" aria-hidden="true">{item.icon}</span>
+              <div>
+                <h3>{item.title}</h3>
+                {item.href ? (
+                  <a href={item.href} target={item.external ? '_blank' : undefined} rel={item.external ? 'noopener noreferrer' : undefined}>
+                    {item.text}
+                  </a>
+                ) : (
+                  <p>{item.text}</p>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CtaSection />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .contact__grid {
+    gap: 1.25rem;
+  }
+
+  .contact__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.1rem;
+    padding: 1.85rem;
+  }
+
+  .contact__icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: var(--radius-md);
+    background-color: var(--color-gray-light);
+    font-size: 1.4rem;
+  }
+
+  .contact__item h3 {
+    font-size: 1.05rem;
+    color: var(--color-aca-blue-dark);
+    margin-bottom: 0.3rem;
+  }
+
+  .contact__item p,
+  .contact__item a {
+    color: var(--color-gray);
+    font-size: 0.95rem;
+  }
+
+  .contact__item a:hover {
+    color: var(--color-aca-blue);
+  }
+</style>

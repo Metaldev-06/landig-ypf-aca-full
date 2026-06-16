@@ -1,0 +1,130 @@
+---
+const highlights = [
+  {
+    title: 'Respaldo de marca',
+    description: 'Estándares de calidad y seguridad YPF en cada surtidor y cada litro despachado.',
+  },
+  {
+    title: 'Trayectoria local',
+    description: 'Años acompañando a familias, transportistas y viajeros que cruzan Formosa.',
+  },
+  {
+    title: 'Beneficios ACA',
+    description: 'Programas y descuentos para socios del Automóvil Club Argentino.',
+  },
+];
+---
+
+<section class="section-muted aca">
+  <div class="container aca__grid">
+    <div class="aca__media reveal">
+      <img src="/images/aca-fachada.svg" alt="Fachada de la estación Díaz Servicios SRL, concesionario oficial YPF ACA" loading="lazy" />
+      <div class="aca__media-badge">
+        <span class="badge badge-aca">ACA</span>
+        <span class="badge badge-ypf">YPF</span>
+      </div>
+    </div>
+
+    <div class="aca__content reveal reveal-delay-1">
+      <span class="eyebrow">Concesionario oficial</span>
+      <h2 class="section-title">Somos YPF ACA en Formosa</h2>
+      <p class="aca__lead">
+        Díaz Servicios SRL es concesionario oficial <strong>YPF ACA</strong>,
+        una alianza que combina la calidad de los combustibles YPF con el
+        respaldo, la asistencia y los beneficios del Automóvil Club Argentino.
+        Para vos, eso significa confianza de punta a punta: desde la carga
+        hasta el último kilómetro de tu viaje.
+      </p>
+
+      <ul class="aca__list">
+        {highlights.map((item) => (
+          <li>
+            <span class="aca__list-icon" aria-hidden="true">✓</span>
+            <div>
+              <strong>{item.title}</strong>
+              <p>{item.description}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .aca__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  .aca__media {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-strong);
+  }
+
+  .aca__media img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .aca__media-badge {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .aca__lead {
+    color: var(--color-gray-dark);
+    margin-block: 1.25rem 1.75rem;
+    font-size: 1.02rem;
+  }
+
+  .aca__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .aca__list li {
+    display: flex;
+    gap: 0.9rem;
+    align-items: flex-start;
+  }
+
+  .aca__list-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--color-aca-blue);
+    color: var(--color-white);
+    font-size: 0.85rem;
+    font-weight: 800;
+  }
+
+  .aca__list strong {
+    display: block;
+    color: var(--color-aca-blue-dark);
+    margin-bottom: 0.2rem;
+  }
+
+  .aca__list p {
+    color: var(--color-gray);
+    font-size: 0.92rem;
+  }
+
+  @media (min-width: 880px) {
+    .aca__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 750" preserveAspectRatio="xMidYMid slice">
+  <rect width="1000" height="750" fill="#1f242c"/>
+  <rect x="0" y="0" width="1000" height="750" fill="#ffd200" opacity="0.08"/>
+  <text x="50%" y="50%" fill="#ffd200" font-family="Arial, sans-serif" font-size="34" font-weight="700" text-anchor="middle">
+    Foto interior tienda Full
+  </text>
+</svg>

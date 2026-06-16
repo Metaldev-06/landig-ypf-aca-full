@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Location from '../components/Location.astro';
+import CtaSection from '../components/CtaSection.astro';
+---
+
+<Layout
+  title="Ubicación | Díaz Servicios SRL - YPF ACA Formosa"
+  description="Encontrá a Díaz Servicios SRL en Formosa: dirección, horarios de atención y cómo llegar en Google Maps."
+>
+  <Header />
+  <main>
+    <PageIntro
+      eyebrow="Cómo llegar"
+      title="Ubicación y horarios"
+      subtitle="Te acercamos la dirección, los horarios de atención y cómo llegar en pocos minutos."
+    />
+    <Location />
+    <CtaSection />
+  </main>
+  <Footer />
+</Layout>

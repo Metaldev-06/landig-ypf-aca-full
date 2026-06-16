@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="g4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a4f9e"/>
+      <stop offset="1" stop-color="#07335e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="900" fill="#f4f6f9"/>
+  <rect width="1000" height="900" fill="url(#g4)" opacity="0.12"/>
+  <rect x="100" y="240" width="800" height="480" rx="18" fill="#ffffff" opacity="0.7"/>
+  <circle cx="820" cy="160" r="160" fill="#ffd200" opacity="0.25"/>
+  <text x="50%" y="50%" fill="#07335e" font-family="Arial, sans-serif" font-size="34" font-weight="700" text-anchor="middle">
+    Reemplazar con foto de familia/auto en ruta
+  </text>
+</svg>

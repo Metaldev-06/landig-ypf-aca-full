@@ -1,0 +1,129 @@
+---
+const items = [
+  { label: 'Café de especialidad', icon: '☕' },
+  { label: 'Comidas rápidas', icon: '🥪' },
+  { label: 'Bebidas frías', icon: '🥤' },
+  { label: 'Snacks y golosinas', icon: '🍫' },
+  { label: 'Espacios de descanso', icon: '🛋️' },
+  { label: 'Atención ágil', icon: '⚡' },
+];
+
+const gallery = [
+  { src: '/images/full-tienda.svg', alt: 'Interior de la tienda Full con góndolas de productos' },
+  { src: '/images/full-cafe.svg', alt: 'Barra de café Full con bebidas calientes' },
+  { src: '/images/full-snacks.svg', alt: 'Exhibidor de snacks y bebidas frías Full' },
+];
+---
+
+<section id="full" class="full">
+  <div class="container full__grid">
+    <div class="full__content reveal">
+      <span class="eyebrow">Tienda de conveniencia</span>
+      <h2 class="section-title">Ahora también disfrutá de Full</h2>
+      <p class="full__lead">
+        Mientras cargás combustible, aprovechá nuestra tienda Full: café recién
+        hecho, comidas rápidas, bebidas y snacks para vos y para todos los que
+        viajan con vos. Un espacio moderno, luminoso y pensado para que tu
+        parada sea un placer, no un trámite.
+      </p>
+
+      <ul class="full__items">
+        {items.map((item) => (
+          <li>
+            <span class="full__item-icon" aria-hidden="true">{item.icon}</span>
+            {item.label}
+          </li>
+        ))}
+      </ul>
+
+      <a href="/ubicacion" class="btn btn-primary">Visitá nuestra tienda Full</a>
+    </div>
+
+    <div class="full__gallery reveal reveal-delay-1">
+      <img src={gallery[0].src} alt={gallery[0].alt} class="full__gallery-main" loading="lazy" />
+      <div class="full__gallery-secondary">
+        <img src={gallery[1].src} alt={gallery[1].alt} loading="lazy" />
+        <img src={gallery[2].src} alt={gallery[2].alt} loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .full {
+    background-color: var(--color-black);
+    color: var(--color-white);
+  }
+
+  .full__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  .full .eyebrow {
+    color: var(--color-ypf-yellow);
+  }
+
+  .full__lead {
+    color: rgba(255, 255, 255, 0.75);
+    margin-block: 1.25rem 1.75rem;
+    font-size: 1.02rem;
+  }
+
+  .full__items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+    margin-bottom: 2.25rem;
+  }
+
+  .full__items li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+    padding: 0.75rem 0.9rem;
+  }
+
+  .full__item-icon {
+    font-size: 1.1rem;
+  }
+
+  .full__gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .full__gallery-main {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+  }
+
+  .full__gallery-secondary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .full__gallery-secondary img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+  }
+
+  @media (min-width: 880px) {
+    .full__grid {
+      grid-template-columns: 1.1fr 1fr;
+    }
+  }
+</style>

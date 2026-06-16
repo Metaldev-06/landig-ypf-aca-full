@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Services from '../components/Services.astro';
+import CtaSection from '../components/CtaSection.astro';
+---
+
+<Layout
+  title="Servicios | Díaz Servicios SRL - YPF ACA Formosa"
+  description="Conocé todos los servicios de Díaz Servicios SRL: carga de nafta y diésel, lubricantes, tienda Full, baños, estacionamiento, atención a viajeros, beneficios ACA y medios de pago."
+>
+  <Header />
+  <main>
+    <PageIntro
+      eyebrow="Servicios"
+      title="Todo lo que necesitás en un solo lugar"
+      subtitle="Desde la carga de combustible hasta un café caliente: en Díaz Servicios encontrás todo lo que necesitás para seguir viaje."
+    />
+    <Services />
+    <CtaSection />
+  </main>
+  <Footer />
+</Layout>

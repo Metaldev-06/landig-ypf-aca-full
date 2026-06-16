@@ -1,0 +1,118 @@
+---
+import { ACA_JOIN_URL } from '../lib/constants';
+
+const benefits = [
+  { title: 'Auxilio mecánico 24/7', icon: '🛠️' },
+  { title: 'Descuentos en combustibles', icon: '⛽' },
+  { title: 'Descuentos en hoteles ACA', icon: '🏨' },
+  { title: 'Asistencia al viajero', icon: '🧭' },
+  { title: 'Seguro automotor', icon: '🛡️' },
+  { title: 'Gestión de trámites', icon: '📄' },
+  { title: 'Comercios adheridos', icon: '🏬' },
+  { title: 'Viajá con tranquilidad', icon: '🧳' },
+];
+---
+
+<section id="club-aca" class="section-light aca-member">
+  <div class="container">
+    <div class="aca-member__panel reveal">
+      <div class="section-header aca-member__header">
+        <span class="eyebrow">Club ACA</span>
+        <h2 class="section-title">Beneficios de ser Socio ACA</h2>
+        <p class="section-subtitle">
+          Ser socio ACA es viajar con respaldo. Accedé a auxilio mecánico,
+          descuentos, asistencia al viajero y beneficios exclusivos en todo
+          el país.
+        </p>
+      </div>
+
+      <div class="grid grid-4 aca-member__grid">
+        {benefits.map((benefit, index) => (
+          <div class={`aca-member__item reveal reveal-delay-${(index % 4) + 1}`}>
+            <span class="aca-member__icon" aria-hidden="true">{benefit.icon}</span>
+            <span class="aca-member__title">{benefit.title}</span>
+          </div>
+        ))}
+      </div>
+
+      <div class="aca-member__actions">
+        <a href={ACA_JOIN_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          Asociate hoy
+        </a>
+        <a href="/socios-aca" class="btn btn-outline aca-member__btn-outline">Ver beneficios</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .aca-member__panel {
+    background: linear-gradient(135deg, var(--color-aca-blue) 0%, var(--color-aca-blue-dark) 100%);
+    border-radius: var(--radius-lg);
+    padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 4rem);
+    color: var(--color-white);
+    box-shadow: var(--shadow-strong);
+  }
+
+  .aca-member__header {
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+
+  .aca-member__header .eyebrow {
+    color: var(--color-ypf-yellow);
+  }
+
+  .aca-member__header .section-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .aca-member__grid {
+    gap: 1.1rem;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+
+  .aca-member__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+    padding: 1.75rem 1.1rem;
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-md);
+    transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+  }
+
+  .aca-member__item:hover {
+    transform: translateY(-4px);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--color-ypf-yellow);
+  }
+
+  .aca-member__icon {
+    font-size: 2rem;
+  }
+
+  .aca-member__title {
+    font-weight: 700;
+    font-size: 0.92rem;
+  }
+
+  .aca-member__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .aca-member__btn-outline {
+    color: var(--color-white);
+    border-color: var(--color-white);
+  }
+
+  .aca-member__btn-outline:hover {
+    background-color: var(--color-white);
+    color: var(--color-aca-blue-dark);
+  }
+</style>

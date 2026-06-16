@@ -1,0 +1,150 @@
+---
+const mapQuery = 'Diaz Servicios SRL YPF ACA, Formosa, Argentina';
+const mapEmbedSrc = `https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed`;
+const mapLinkSrc = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`;
+
+const hours = [
+  { day: 'Lunes a domingo', time: '24 horas' },
+  { day: 'Tienda Full', time: '06:00 a 23:00 hs' },
+  { day: 'Atención al cliente', time: 'Todos los días' },
+];
+---
+
+<section id="ubicacion" class="section-muted location">
+  <div class="container location__grid">
+    <div class="location__content reveal">
+      <span class="eyebrow">Encontranos</span>
+      <h2 class="section-title">Estamos en Formosa para acompañarte en cada viaje</h2>
+      <p class="section-subtitle location__subtitle">
+        Ubicados sobre una de las rutas de acceso a la ciudad, listos para
+        recibirte las 24 horas, los 365 días del año.
+      </p>
+
+      <div class="location__info">
+        <div class="location__info-item">
+          <span class="location__info-icon" aria-hidden="true">📍</span>
+          <div>
+            <strong>Dirección</strong>
+            <p>Ruta de acceso a Formosa, Formosa, Argentina</p>
+          </div>
+        </div>
+
+        <div class="location__info-item">
+          <span class="location__info-icon" aria-hidden="true">🕑</span>
+          <div>
+            <strong>Horarios</strong>
+            <ul class="location__hours">
+              {hours.map((item) => (
+                <li><span>{item.day}</span><span>{item.time}</span></li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <a href={mapLinkSrc} target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+        Abrir en Google Maps
+      </a>
+    </div>
+
+    <div class="location__map reveal reveal-delay-1">
+      <iframe
+        title="Ubicación de Díaz Servicios SRL en el mapa"
+        src={mapEmbedSrc}
+        width="100%"
+        height="100%"
+        style="border:0;"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+  </div>
+</section>
+
+<style>
+  .location__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  .location__subtitle {
+    margin-block: 1rem 1.75rem;
+  }
+
+  .location__info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .location__info-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .location__info-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 46px;
+    height: 46px;
+    border-radius: var(--radius-md);
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-soft);
+    font-size: 1.3rem;
+  }
+
+  .location__info-item strong {
+    display: block;
+    color: var(--color-aca-blue-dark);
+    margin-bottom: 0.35rem;
+  }
+
+  .location__info-item p {
+    color: var(--color-gray);
+    font-size: 0.95rem;
+  }
+
+  .location__hours {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .location__hours li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    max-width: 320px;
+    font-size: 0.92rem;
+    color: var(--color-gray);
+  }
+
+  .location__hours li span:last-child {
+    font-weight: 700;
+    color: var(--color-gray-dark);
+  }
+
+  .location__map {
+    width: 100%;
+    min-height: 360px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-strong);
+  }
+
+  @media (min-width: 880px) {
+    .location__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .location__map {
+      min-height: 460px;
+    }
+  }
+</style>

@@ -1,0 +1,52 @@
+---
+import { WHATSAPP_URL } from '../lib/constants';
+
+const whatsappHref = WHATSAPP_URL('Hola! Quería consultar sobre Díaz Servicios SRL.');
+---
+
+<section class="cta">
+  <div class="container cta__inner reveal">
+    <h2 class="cta__title">La ruta te espera, nosotros también</h2>
+    <p class="cta__text">
+      Pasá por Díaz Servicios SRL y disfrutá la experiencia YPF ACA con la
+      comodidad de Full. Te esperamos con la energía lista para tu próximo viaje.
+    </p>
+    <div class="cta__actions">
+      <a href="/ubicacion" class="btn btn-primary">Cómo llegar</a>
+      <a href={whatsappHref} target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
+        Escribinos por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta {
+    background: linear-gradient(135deg, var(--color-aca-blue) 0%, var(--color-aca-blue-dark) 100%);
+    color: var(--color-white);
+    text-align: center;
+  }
+
+  .cta__inner {
+    max-width: 720px;
+    margin-inline: auto;
+  }
+
+  .cta__title {
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    margin-bottom: 1.1rem;
+  }
+
+  .cta__text {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    margin-bottom: 2.25rem;
+  }
+
+  .cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+</style>

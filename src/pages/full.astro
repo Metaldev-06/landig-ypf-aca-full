@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageIntro from '../components/PageIntro.astro';
+import FullSection from '../components/FullSection.astro';
+import CtaSection from '../components/CtaSection.astro';
+---
+
+<Layout
+  title="Tienda Full | Díaz Servicios SRL - YPF ACA Formosa"
+  description="Conocé la tienda Full de Díaz Servicios SRL en Formosa: café de especialidad, comidas rápidas, bebidas, snacks y espacios de descanso en ruta."
+>
+  <Header />
+  <main>
+    <PageIntro
+      eyebrow="Full"
+      title="Tu pausa en ruta, con estilo"
+      subtitle="Conocé nuestra tienda Full: café, comidas rápidas, bebidas y snacks en un espacio moderno y luminoso."
+    />
+    <FullSection />
+    <CtaSection />
+  </main>
+  <Footer />
+</Layout>

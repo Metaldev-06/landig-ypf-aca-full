@@ -1,0 +1,80 @@
+---
+import { ACA_JOIN_URL } from '../lib/constants';
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  text: string;
+  href?: string;
+  buttonLabel?: string;
+  variant?: 'dark' | 'light';
+}
+
+const {
+  eyebrow,
+  title,
+  text,
+  href = ACA_JOIN_URL,
+  buttonLabel = 'Asociate hoy',
+  variant = 'dark',
+} = Astro.props;
+---
+
+<section class={`aca-join aca-join--${variant}`}>
+  <div class="container aca-join__inner reveal">
+    {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+    <h2 class="aca-join__title">{title}</h2>
+    <p class="aca-join__text">{text}</p>
+    <a href={href} target="_blank" rel="noopener noreferrer" class="btn btn-primary aca-join__btn">
+      {buttonLabel}
+    </a>
+  </div>
+</section>
+
+<style>
+  .aca-join {
+    text-align: center;
+  }
+
+  .aca-join--dark {
+    background: linear-gradient(135deg, var(--color-aca-blue) 0%, var(--color-aca-blue-dark) 100%);
+    color: var(--color-white);
+  }
+
+  .aca-join--light {
+    background-color: var(--color-gray-light);
+    color: var(--color-black);
+  }
+
+  .aca-join--dark .eyebrow {
+    color: var(--color-ypf-yellow);
+  }
+
+  .aca-join__inner {
+    max-width: 720px;
+    margin-inline: auto;
+  }
+
+  .aca-join__title {
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    margin-bottom: 1.1rem;
+  }
+
+  .aca-join__text {
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    margin-bottom: 2.25rem;
+  }
+
+  .aca-join--dark .aca-join__text {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .aca-join--light .aca-join__text {
+    color: var(--color-gray);
+  }
+
+  .aca-join__btn {
+    font-size: 1.05rem;
+    padding: 1.05rem 2.5rem;
+  }
+</style>

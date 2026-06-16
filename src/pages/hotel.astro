@@ -388,7 +388,13 @@ const features = [
 
   /* ── Carousel ── */
   .hotel-carousel {
-    display: none;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-strong);
+    margin-top: 1.75rem;
   }
 
   @media (min-width: 880px) {
@@ -397,13 +403,7 @@ const features = [
     }
 
     .hotel-carousel {
-      display: block;
-      position: relative;
-      width: 100%;
-      aspect-ratio: 4/3;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-strong);
+      margin-top: 0;
     }
   }
 

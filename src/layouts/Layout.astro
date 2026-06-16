@@ -1,5 +1,6 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
   title?: string;
@@ -8,9 +9,9 @@ interface Props {
 }
 
 const {
-  title = 'Díaz Servicios SRL | Estación YPF ACA en Formosa',
-  description = 'Díaz Servicios SRL, concesionario oficial YPF ACA en Formosa. Combustibles YPF, beneficios para socios ACA, tienda Full, servicios para viajeros y atención personalizada las 24 horas.',
-  image = '/images/og-cover.svg',
+  title = "Díaz Servicios SRL | Estación YPF ACA en Formosa",
+  description = "Díaz Servicios SRL, concesionario oficial YPF ACA en Formosa. Combustibles YPF, beneficios para socios ACA, tienda Full, servicios para viajeros y atención personalizada las 24 horas.",
+  image = "/images/og-cover.svg",
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -50,27 +51,29 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     />
 
     <meta name="generator" content={Astro.generator} />
+    <ClientRouter />
   </head>
   <body>
     <slot />
 
     <script>
-      // Scroll-reveal animations using IntersectionObserver
-      const revealEls = document.querySelectorAll('.reveal');
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          for (const entry of entries) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              observer.unobserve(entry.target);
+      function initScrollReveal() {
+        const revealEls = document.querySelectorAll(".reveal:not(.is-visible)");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
             }
-          }
-        },
-        { threshold: 0.15, rootMargin: '0px 0px -60px 0px' }
-      );
+          },
+          { threshold: 0.15, rootMargin: "0px 0px -60px 0px" },
+        );
+        revealEls.forEach((el) => observer.observe(el));
+      }
 
-      revealEls.forEach((el) => observer.observe(el));
+      document.addEventListener("astro:page-load", initScrollReveal);
     </script>
   </body>
 </html>

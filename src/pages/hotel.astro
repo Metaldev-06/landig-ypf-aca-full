@@ -153,14 +153,17 @@ const features = [
 
             <div class="hotel-form__row">
               <div class="form-group">
-                <label for="checkin">Fecha de ingreso</label>
+                <label for="checkin">
+                  Fecha de ingreso
+                  <span class="required-mark" aria-label="requerido">*</span>
+                </label>
                 <input
                   type="date"
                   id="checkin"
                   name="checkin"
                   class="form-control"
-                  required
                 />
+                <p class="field-error" id="checkin-error" role="alert" aria-live="polite"></p>
               </div>
               <div class="form-group">
                 <label for="checkout">Fecha de egreso</label>
@@ -169,13 +172,16 @@ const features = [
                   id="checkout"
                   name="checkout"
                   class="form-control"
-                  required
                 />
+                <p class="field-error" id="checkout-error" role="alert" aria-live="polite"></p>
               </div>
             </div>
 
             <div class="form-group">
-              <label for="guests">Cantidad de personas</label>
+              <label for="guests-display">
+                Cantidad de personas
+                <span class="required-mark" aria-label="requerido">*</span>
+              </label>
               <div class="guests-control">
                 <button
                   type="button"
@@ -199,15 +205,13 @@ const features = [
             </div>
 
             <div class="form-group">
-              <label>¿Sos socio ACA?</label>
-              <div class="radio-group">
+              <label>
+                ¿Sos socio ACA?
+                <span class="required-mark" aria-label="requerido">*</span>
+              </label>
+              <div class="radio-group" id="aca-group">
                 <label class="radio-card">
-                  <input
-                    type="radio"
-                    name="aca"
-                    value="Sí, soy socio ACA"
-                    required
-                  />
+                  <input type="radio" name="aca" value="Sí, soy socio ACA" />
                   <span class="radio-card__inner">
                     <span class="radio-card__icon" aria-hidden="true">🎫</span>
                     <span>Sí, soy socio</span>
@@ -221,18 +225,17 @@ const features = [
                   </span>
                 </label>
               </div>
+              <p class="field-error" id="aca-error" role="alert" aria-live="polite"></p>
             </div>
 
             <div class="form-group">
-              <label>Tipo de cama</label>
-              <div class="radio-group">
+              <label>
+                Tipo de cama
+                <span class="required-mark" aria-label="requerido">*</span>
+              </label>
+              <div class="radio-group" id="room-group">
                 <label class="radio-card">
-                  <input
-                    type="radio"
-                    name="room"
-                    value="Cama matrimonial"
-                    required
-                  />
+                  <input type="radio" name="room" value="Cama matrimonial" />
                   <span class="radio-card__inner">
                     <span class="radio-card__icon" aria-hidden="true">🛏️</span>
                     <span>Matrimonial</span>
@@ -247,15 +250,8 @@ const features = [
                   </span>
                 </label>
               </div>
+              <p class="field-error" id="room-error" role="alert" aria-live="polite"></p>
             </div>
-
-            <p
-              id="hotel-form-error"
-              class="hotel-form__error"
-              role="alert"
-              aria-live="assertive"
-            >
-            </p>
 
             <button type="submit" class="btn btn-whatsapp hotel-form__submit">
               <svg
@@ -595,6 +591,33 @@ const features = [
     padding: 0 0.5rem;
   }
 
+  /* Asterisco de campo requerido */
+  .required-mark {
+    color: #c0392b;
+    margin-left: 0.2rem;
+    font-weight: 700;
+  }
+
+  /* Error inline por campo */
+  .field-error {
+    color: #c0392b;
+    font-size: 0.82rem;
+    font-weight: 600;
+    min-height: 1rem;
+    margin-top: 0.3rem;
+  }
+
+  /* Input con error */
+  .form-control.is-invalid {
+    border-color: #c0392b;
+    box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.1);
+  }
+
+  /* Radio group con error */
+  .radio-group.is-invalid .radio-card__inner {
+    border-color: #c0392b;
+  }
+
   /* Radio cards */
   .radio-group {
     display: grid;
@@ -739,7 +762,13 @@ const features = [
   const guestsDisplay = document.getElementById("guests-display");
   const guestsDec = document.getElementById("guests-dec");
   const guestsInc = document.getElementById("guests-inc");
-  const errorEl = document.getElementById("hotel-form-error");
+
+  // Bloquear fechas pasadas en ambos inputs
+  const today = new Date().toISOString().split("T")[0];
+  const checkinInput = document.getElementById("checkin");
+  const checkoutInput = document.getElementById("checkout");
+  if (checkinInput) checkinInput.min = today;
+  if (checkoutInput) checkoutInput.min = today;
 
   let guests = 1;
 
@@ -752,15 +781,86 @@ const features = [
   guestsDec?.addEventListener("click", () => updateGuests(-1));
   guestsInc?.addEventListener("click", () => updateGuests(1));
 
+  // ── Helpers de validación por campo ──
+
+  function setFieldError(inputId, errorId, message) {
+    const input = document.getElementById(inputId);
+    const err = document.getElementById(errorId);
+    if (input) input.classList.add("is-invalid");
+    if (err) err.textContent = message;
+  }
+
+  function clearFieldError(inputId, errorId) {
+    const input = document.getElementById(inputId);
+    const err = document.getElementById(errorId);
+    if (input) input.classList.remove("is-invalid");
+    if (err) err.textContent = "";
+  }
+
+  function setGroupError(groupId, errorId, message) {
+    const group = document.getElementById(groupId);
+    const err = document.getElementById(errorId);
+    if (group) group.classList.add("is-invalid");
+    if (err) err.textContent = message;
+  }
+
+  function clearGroupError(groupId, errorId) {
+    const group = document.getElementById(groupId);
+    const err = document.getElementById(errorId);
+    if (group) group.classList.remove("is-invalid");
+    if (err) err.textContent = "";
+  }
+
+  // ── Limpieza de errores en tiempo real ──
+
+  document.getElementById("checkin")?.addEventListener("change", () => {
+    const checkin = document.getElementById("checkin").value;
+    if (checkin && checkin < today) {
+      setFieldError("checkin", "checkin-error", "No podés seleccionar una fecha pasada.");
+    } else {
+      clearFieldError("checkin", "checkin-error");
+    }
+    // revalidar checkout si ya tiene valor
+    const checkout = document.getElementById("checkout").value;
+    if (checkout && checkin && new Date(checkout) <= new Date(checkin)) {
+      setFieldError("checkout", "checkout-error", "Debe ser posterior al ingreso.");
+    } else if (!checkout || (checkin && checkout >= checkin)) {
+      clearFieldError("checkout", "checkout-error");
+    }
+  });
+
+  document.getElementById("checkout")?.addEventListener("change", () => {
+    const checkout = document.getElementById("checkout").value;
+    const checkin = document.getElementById("checkin").value;
+    if (checkout && checkout < today) {
+      setFieldError("checkout", "checkout-error", "No podés seleccionar una fecha pasada.");
+    } else if (checkout && checkin && new Date(checkout) <= new Date(checkin)) {
+      setFieldError("checkout", "checkout-error", "Debe ser posterior al ingreso.");
+    } else {
+      clearFieldError("checkout", "checkout-error");
+    }
+  });
+
+  document.querySelectorAll('input[name="aca"]').forEach((radio) => {
+    radio.addEventListener("change", () => clearGroupError("aca-group", "aca-error"));
+  });
+
+  document.querySelectorAll('input[name="room"]').forEach((radio) => {
+    radio.addEventListener("change", () => clearGroupError("room-group", "room-error"));
+  });
+
+  // ── Formateo de fecha ──
+
   function formatDate(raw) {
-    if (!raw) return "(sin fecha)";
+    if (!raw) return null;
     const [y, m, d] = raw.split("-");
     return `${d}/${m}/${y}`;
   }
 
+  // ── Envío ──
+
   form?.addEventListener("submit", (e) => {
     e.preventDefault();
-    errorEl.textContent = "";
 
     const data = new FormData(form);
     const checkin = data.get("checkin");
@@ -769,39 +869,62 @@ const features = [
     const aca = data.get("aca");
     const room = data.get("room");
 
+    let hasError = false;
+
+    // Campos requeridos
     if (!checkin) {
-      errorEl.textContent = "Por favor indicá la fecha de ingreso.";
-      return;
-    }
-    if (!checkout) {
-      errorEl.textContent = "Por favor indicá la fecha de egreso.";
-      return;
-    }
-    if (new Date(checkout) <= new Date(checkin)) {
-      errorEl.textContent =
-        "La fecha de egreso debe ser posterior a la de ingreso.";
-      return;
-    }
-    if (!aca) {
-      errorEl.textContent = "Por favor indicá si sos socio ACA.";
-      return;
-    }
-    if (!room) {
-      errorEl.textContent = "Por favor seleccioná el tipo de cama.";
-      return;
+      setFieldError("checkin", "checkin-error", "Indicá la fecha de ingreso.");
+      hasError = true;
+    } else if (checkin < today) {
+      setFieldError("checkin", "checkin-error", "No podés seleccionar una fecha pasada.");
+      hasError = true;
+    } else {
+      clearFieldError("checkin", "checkin-error");
     }
 
-    const nights = Math.round(
-      (new Date(checkout) - new Date(checkin)) / 86400000,
-    );
-    const nightLabel = nights === 1 ? "1 noche" : `${nights} noches`;
-    const guestLabel =
-      guestsVal === "1" ? "1 persona" : `${guestsVal} personas`;
+    // Checkout opcional, pero si se completa debe ser hoy o posterior y después del ingreso
+    if (checkout && checkout < today) {
+      setFieldError("checkout", "checkout-error", "No podés seleccionar una fecha pasada.");
+      hasError = true;
+    } else if (checkout && checkin && new Date(checkout) <= new Date(checkin)) {
+      setFieldError("checkout", "checkout-error", "Debe ser posterior al ingreso.");
+      hasError = true;
+    } else {
+      clearFieldError("checkout", "checkout-error");
+    }
+
+    if (!aca) {
+      setGroupError("aca-group", "aca-error", "Seleccioná si sos socio ACA.");
+      hasError = true;
+    } else {
+      clearGroupError("aca-group", "aca-error");
+    }
+
+    if (!room) {
+      setGroupError("room-group", "room-error", "Seleccioná el tipo de cama.");
+      hasError = true;
+    } else {
+      clearGroupError("room-group", "room-error");
+    }
+
+    if (hasError) return;
+
+    // Construir mensaje de WhatsApp
+    const guestLabel = guestsVal === "1" ? "1 persona" : `${guestsVal} personas`;
+
+    let egresoLine;
+    if (checkout) {
+      const nights = Math.round((new Date(checkout) - new Date(checkin)) / 86400000);
+      const nightLabel = nights === 1 ? "1 noche" : `${nights} noches`;
+      egresoLine = `📅 Egreso: ${formatDate(checkout)} (${nightLabel})`;
+    } else {
+      egresoLine = `📅 Egreso: A confirmar`;
+    }
 
     const message =
       `¡Hola! Quisiera consultar disponibilidad en el Hotel de Díaz Servicios SRL.\n\n` +
       `📅 Ingreso: ${formatDate(checkin)}\n` +
-      `📅 Egreso: ${formatDate(checkout)} (${nightLabel})\n` +
+      `${egresoLine}\n` +
       `👥 Personas: ${guestLabel}\n` +
       `🎫 Socio ACA: ${aca}\n` +
       `🛏️ Tipo de cama: ${room}\n\n` +

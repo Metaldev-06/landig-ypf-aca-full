@@ -1,17 +1,26 @@
 ---
 const items = [
-  { label: 'Café de especialidad', icon: '☕' },
-  { label: 'Comidas rápidas', icon: '🥪' },
-  { label: 'Bebidas frías', icon: '🥤' },
-  { label: 'Snacks y golosinas', icon: '🍫' },
-  { label: 'Espacios de descanso', icon: '🛋️' },
-  { label: 'Atención ágil', icon: '⚡' },
+  { label: "Café de especialidad", icon: "☕" },
+  { label: "Comidas rápidas", icon: "🥪" },
+  { label: "Bebidas frías", icon: "🥤" },
+  { label: "Snacks y golosinas", icon: "🍫" },
+  { label: "Espacios de descanso", icon: "🛋️" },
+  { label: "Atención ágil", icon: "⚡" },
 ];
 
 const gallery = [
-  { src: '/images/full-tienda.svg', alt: 'Interior de la tienda Full con góndolas de productos' },
-  { src: '/images/full-cafe.svg', alt: 'Barra de café Full con bebidas calientes' },
-  { src: '/images/full-snacks.svg', alt: 'Exhibidor de snacks y bebidas frías Full' },
+  {
+    src: "/images/imagen-full-gondolas.png",
+    alt: "Interior de la tienda Full con góndolas de productos",
+  },
+  {
+    src: "/images/imagen-full-cafe.png",
+    alt: "Barra de café Full con bebidas calientes",
+  },
+  {
+    src: "/images/imagen-full-gondolas-2.png",
+    alt: "Exhibidor de snacks y bebidas frías Full",
+  },
 ];
 ---
 
@@ -28,22 +37,49 @@ const gallery = [
       </p>
 
       <ul class="full__items">
-        {items.map((item) => (
-          <li>
-            <span class="full__item-icon" aria-hidden="true">{item.icon}</span>
-            {item.label}
-          </li>
-        ))}
+        {
+          items.map((item) => (
+            <li>
+              <span class="full__item-icon" aria-hidden="true">
+                {item.icon}
+              </span>
+              {item.label}
+            </li>
+          ))
+        }
       </ul>
 
-      <a href="/ubicacion" class="btn btn-primary">Visitá nuestra tienda Full</a>
+      <a href="/ubicacion" class="btn btn-primary">Visitá nuestra tienda Full</a
+      >
     </div>
 
     <div class="full__gallery reveal reveal-delay-1">
-      <img src={gallery[0].src} alt={gallery[0].alt} class="full__gallery-main" width="800" height="600" loading="lazy" decoding="async" />
+      <img
+        src={gallery[0].src}
+        alt={gallery[0].alt}
+        class="full__gallery-main"
+        width="800"
+        height="600"
+        loading="lazy"
+        decoding="async"
+      />
       <div class="full__gallery-secondary">
-        <img src={gallery[1].src} alt={gallery[1].alt} width="400" height="400" loading="lazy" decoding="async" />
-        <img src={gallery[2].src} alt={gallery[2].alt} width="400" height="400" loading="lazy" decoding="async" />
+        <img
+          src={gallery[1].src}
+          alt={gallery[1].alt}
+          width="400"
+          height="400"
+          loading="lazy"
+          decoding="async"
+        />
+        <img
+          src={gallery[2].src}
+          alt={gallery[2].alt}
+          width="400"
+          height="400"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
     </div>
   </div>

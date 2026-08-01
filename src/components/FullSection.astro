@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
-import imgGondolas  from "../assets/images/imagen-full-gondolas.png";
-import imgCafe      from "../assets/images/imagen-full-cafe.png";
+import imgGondolas from "../assets/images/imagen-full-gondolas.png";
+import imgCafe from "../assets/images/imagen-full-cafe.png";
 import imgGondolas2 from "../assets/images/imagen-full-gondolas-2.png";
 
 const items = [
@@ -14,8 +14,11 @@ const items = [
 ];
 
 const gallery = [
-  { src: imgGondolas,  alt: "Interior de la tienda Full con góndolas de productos" },
-  { src: imgCafe,      alt: "Barra de café Full con bebidas calientes" },
+  {
+    src: imgGondolas,
+    alt: "Interior de la tienda Full con góndolas de productos",
+  },
+  { src: imgCafe, alt: "Barra de café Full con bebidas calientes" },
   { src: imgGondolas2, alt: "Exhibidor de snacks y bebidas frías Full" },
 ];
 ---
@@ -45,7 +48,8 @@ const gallery = [
         }
       </ul>
 
-      <a href="/ubicacion" class="btn btn-primary">Visitá nuestra tienda Full</a>
+      <a href="/ubicacion" class="btn btn-primary">Visitá nuestra tienda Full</a
+      >
     </div>
 
     <div class="full__gallery reveal reveal-delay-1">
@@ -66,9 +70,18 @@ const gallery = [
         <span class="g-hover" aria-hidden="true">
           <span class="g-hover__badge">
             <!-- Ojo SVG inline con width/height explícitos -->
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-              <circle cx="12" cy="12" r="3"/>
+            <svg
+              width="26"
+              height="26"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
             </svg>
           </span>
         </span>
@@ -92,9 +105,18 @@ const gallery = [
               />
               <span class="g-hover" aria-hidden="true">
                 <span class="g-hover__badge">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                    <circle cx="12" cy="12" r="3"/>
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                    <circle cx="12" cy="12" r="3" />
                   </svg>
                 </span>
               </span>
@@ -116,9 +138,19 @@ const gallery = [
 >
   <div id="flb-backdrop"></div>
   <button id="flb-close" type="button" aria-label="Cerrar imagen">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <line x1="18" y1="6" x2="6" y2="18"/>
-      <line x1="6" y1="6" x2="18" y2="18"/>
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="white"
+      stroke-width="2.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
     </svg>
   </button>
   <img id="flb-img" src="" alt="" />
@@ -139,7 +171,9 @@ const gallery = [
     align-items: center;
   }
 
-  .full .eyebrow { color: var(--color-ypf-yellow); }
+  .full .eyebrow {
+    color: var(--color-ypf-yellow);
+  }
 
   .full__lead {
     color: rgba(255, 255, 255, 0.75);
@@ -166,7 +200,9 @@ const gallery = [
     padding: 0.75rem 0.9rem;
   }
 
-  .full__item-icon { font-size: 1.1rem; }
+  .full__item-icon {
+    font-size: 1.1rem;
+  }
 
   /* Galería */
   .full__gallery {
@@ -182,7 +218,9 @@ const gallery = [
   }
 
   @media (min-width: 880px) {
-    .full__grid { grid-template-columns: 1.1fr 1fr; }
+    .full__grid {
+      grid-template-columns: 1.1fr 1fr;
+    }
   }
 
   /* ── Triggers ── */
@@ -198,19 +236,27 @@ const gallery = [
     border-radius: var(--radius-md);
   }
 
-  .g-trigger--main { border-radius: var(--radius-lg); }
+  .g-trigger--main {
+    border-radius: var(--radius-lg);
+  }
 
   .g-trigger img {
     display: block;
     width: 100%;
     object-fit: cover;
     border-radius: 0;
-    transition: transform 0.42s ease, filter 0.42s ease;
+    transition:
+      transform 0.42s ease,
+      filter 0.42s ease;
   }
 
-  .full__gallery-main { aspect-ratio: 4 / 3; }
+  .full__gallery-main {
+    aspect-ratio: 4 / 3;
+  }
 
-  .full__gallery-secondary .g-trigger img { aspect-ratio: 1 / 1; }
+  .full__gallery-secondary .g-trigger img {
+    aspect-ratio: 1 / 1;
+  }
 
   .g-trigger:hover img,
   .g-trigger:focus-visible img {
@@ -259,7 +305,9 @@ const gallery = [
   @media (prefers-reduced-motion: reduce) {
     .g-trigger img,
     .g-hover,
-    .g-hover__badge { transition: none; }
+    .g-hover__badge {
+      transition: none;
+    }
   }
 </style>
 
@@ -329,7 +377,10 @@ const gallery = [
     cursor: pointer;
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    transition: background-color 0.2s, border-color 0.2s, transform 0.25s;
+    transition:
+      background-color 0.2s,
+      border-color 0.2s,
+      transform 0.25s;
     view-transition-name: none;
   }
 
@@ -345,24 +396,50 @@ const gallery = [
 
   /* ─── Keyframes ─── */
   @keyframes flb-img-in {
-    from { opacity: 0; transform: scale(0.86); }
-    to   { opacity: 1; transform: scale(1); }
+    from {
+      opacity: 0;
+      transform: scale(0.86);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
   @keyframes flb-img-out {
-    from { opacity: 1; transform: scale(1); }
-    to   { opacity: 0; transform: scale(0.92); }
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.92);
+    }
   }
   @keyframes flb-fade-in {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
   @keyframes flb-fade-out {
-    from { opacity: 1; }
-    to   { opacity: 0; }
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
   }
   @keyframes flb-close-in {
-    from { opacity: 0; transform: rotate(-90deg) scale(0.65); }
-    to   { opacity: 1; transform: rotate(0deg) scale(1); }
+    from {
+      opacity: 0;
+      transform: rotate(-90deg) scale(0.65);
+    }
+    to {
+      opacity: 1;
+      transform: rotate(0deg) scale(1);
+    }
   }
 
   /* ─── View-transition: imagen ─── */
@@ -400,22 +477,28 @@ const gallery = [
 <!-- ── Script ── -->
 <script>
   function initLightbox() {
-    const lb      = document.getElementById("flb");
-    const lbImg   = document.getElementById("flb-img")      as HTMLImageElement | null;
+    const lb = document.getElementById("flb");
+    const lbImg = document.getElementById("flb-img") as HTMLImageElement | null;
     const lbClose = document.getElementById("flb-close");
-    const lbBg    = document.getElementById("flb-backdrop");
+    const lbBg = document.getElementById("flb-backdrop");
 
     if (!lb || !lbImg) return;
 
     const supportsVT = "startViewTransition" in document;
-    const noMotion   = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const noMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
     /* Corre la función de actualización del DOM dentro de una VT si es posible */
     function transition(updateFn: () => void) {
       if (supportsVT && !noMotion) {
         document.documentElement.classList.add("lbx-vt");
-        const t = (document as any).startViewTransition(updateFn) as { finished: Promise<void> };
-        t.finished.then(() => document.documentElement.classList.remove("lbx-vt"));
+        const t = (document as any).startViewTransition(updateFn) as {
+          finished: Promise<void>;
+        };
+        t.finished.then(() =>
+          document.documentElement.classList.remove("lbx-vt"),
+        );
       } else {
         updateFn();
       }
@@ -423,27 +506,28 @@ const gallery = [
 
     function open(trigger: HTMLElement) {
       const img = trigger.querySelector("img") as HTMLImageElement;
+      if (!lbImg) return;
       lbImg.src = img.src;
       lbImg.alt = img.alt;
       transition(() => {
-        lb.setAttribute("data-open", "");
-        lb.removeAttribute("aria-hidden");
+        lb?.setAttribute("data-open", "");
+        lb?.removeAttribute("aria-hidden");
         document.body.style.overflow = "hidden";
       });
     }
 
     function close() {
       transition(() => {
-        lb.removeAttribute("data-open");
-        lb.setAttribute("aria-hidden", "true");
+        lb?.removeAttribute("data-open");
+        lb?.setAttribute("aria-hidden", "true");
         document.body.style.overflow = "";
       });
     }
 
     /* Conectar triggers */
-    document.querySelectorAll<HTMLElement>(".g-trigger").forEach((t) =>
-      t.addEventListener("click", () => open(t))
-    );
+    document
+      .querySelectorAll<HTMLElement>(".g-trigger")
+      .forEach((t) => t.addEventListener("click", () => open(t)));
 
     lbClose?.addEventListener("click", close);
     lbBg?.addEventListener("click", close);

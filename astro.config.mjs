@@ -5,6 +5,9 @@ export default defineConfig({
   site: 'https://www.diazserviciosypf.com.ar',
   compressHTML: true,
   integrations: [sitemap()],
+  image: {
+    quality: 80,
+  },
   prefetch: {
     defaultStrategy: 'hover',
   },

@@ -33,7 +33,7 @@ const features = [
     <!-- Hero hotel -->
     <section class="hotel-hero">
       <div class="hotel-hero__media" aria-hidden="true">
-        <Image src={imgFachada} alt="" loading="eager" fetchpriority="high" decoding="sync" />
+        <Image src={imgFachada} alt="" width={1440} loading="eager" fetchpriority="high" decoding="sync" />
         <div class="hotel-hero__overlay"></div>
       </div>
       <div class="container hotel-hero__content">
@@ -92,7 +92,7 @@ const features = [
               {
                 carouselSlides.map((slide) => (
                   <div class="hotel-carousel__slide">
-                    <Image src={slide.src} alt={slide.alt} loading="lazy" decoding="async" />
+                    <Image src={slide.src} alt={slide.alt} width={1200} loading="lazy" decoding="async" />
                   </div>
                 ))
               }
